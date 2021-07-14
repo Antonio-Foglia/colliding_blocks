@@ -95,6 +95,8 @@ def main2(box1, box2, realspeed = False, simspeed = 1):
 
     b1 = turtle.Turtle()
     b1.shape("square")
+    #turtle.register_shape('1.gif')
+    #b1.shape("1.gif")
     b1.shapesize(stretch_wid=box1['w']/2*SCALE/10, stretch_len=box1['w']/2*SCALE/10, outline=None)
     b1.color("green")
     b1.penup()
@@ -105,6 +107,8 @@ def main2(box1, box2, realspeed = False, simspeed = 1):
 
     b2 = turtle.Turtle()
     b2.shape("square")
+    #turtle.register_shape('2.gif')
+    #b2.shape("2.gif")
     b2.shapesize(stretch_wid=box2['w']/2*SCALE/10, stretch_len=box2['w']/2*SCALE/10, outline=None)
     b2.color("blue")
     b2.penup()
@@ -117,6 +121,9 @@ def main2(box1, box2, realspeed = False, simspeed = 1):
     while True:
 
         wn.update()
+
+        #b1.left(1)
+        #b2.right(1)
 
         old_coll = collisions
         old_v = (box1['v'], box2['v'])
