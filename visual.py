@@ -218,8 +218,8 @@ def bxs(error = True):
             l1 = pui.prompt(text='Enter the following for box 1 separated by a space: \nx-coordinate (m) \nwidth (m) \nvelocity (m/s) \nmass (kg)', title='BOX1' , default='5 1 0 1').split()
             l2 = pui.prompt(text='Enter the following for box 2 separated by a space: \nx-coordinate (m) \nwidth (m) \nvelocity (m/s) \nmass (kg)', title='BOX2' , default='10 4 -2 100').split()
 
-            box1 = {'x1': int(l1[0]) , 'w': int(l1[1]), 'v' : int(l1[2]) , 'm': int(l1[3]) }
-            box2 = {'x1': int(l2[0]) , 'w': int(l2[1]), 'v' : int(l2[2]) , 'm': int(l2[3]) }
+            box1 = {'x1': float(l1[0]) , 'w': float(l1[1]), 'v' : float(l1[2]) , 'm': float(l1[3]) }
+            box2 = {'x1': float(l2[0]) , 'w': float(l2[1]), 'v' : float(l2[2]) , 'm': float(l2[3]) }
         except:
             if pui.confirm('You made a mistake, try filling in the details again or press cancel to exit')  == 'Cancel':
                 error = False
