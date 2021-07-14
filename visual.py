@@ -143,6 +143,7 @@ def main2(box1, box2, realspeed = False, simspeed = 1):
             
         if old_v != (box1['v'], box2['v']):
             mlabel.clear()
+            mlabel.color("green")
             mlabel.goto(-200,270)
             mlabel.write("green mass: {} kg \ngreen speed: {} m/s".format(box1['m'],round(box1['v']/VCONST if realspeed else box1['v'],2)),
                          move=False,
@@ -150,8 +151,8 @@ def main2(box1, box2, realspeed = False, simspeed = 1):
                          font=("Deja Vu Sans Mono", 15, "normal"))
             mlabel.color("blue")
             mlabel.goto(0,270)
-            mlabel.write("blue mass: {} kg \nblue speed: {} m/s".format(box2['m'],round(box2['v']/VCONST if realspeed else box2['v'],2)), m
-                         ove=False,
+            mlabel.write("blue mass: {} kg \nblue speed: {} m/s".format(box2['m'],round(box2['v']/VCONST if realspeed else box2['v'],2)),
+                         move=False,
                          align="left",
                          font=("Deja Vu Sans Mono", 15, "normal"))
 
@@ -162,7 +163,7 @@ def main2(box1, box2, realspeed = False, simspeed = 1):
             
             
     
-    turtle.done
+    wn.mainloop()
     
     
     if realspeed:
@@ -199,5 +200,13 @@ def collision(box1, box2):
   
 box1 ={'x1': 5 , 'w': 1, 'v' : 0 , 'm': 1 }
 box2 = {'x1':10 , 'w': 4, 'v' : -2 , 'm': 100}
-main2(box1,box2,realspeed=True)
+
+try:
+  main2(box1,box2,realspeed=True)
+except:
+  print('Closed!')
+    
+
+
+
   
