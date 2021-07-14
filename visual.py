@@ -28,7 +28,17 @@ def main2(box1, box2, realspeed = False, simspeed = 1):
     wn.title("Blocks")
 
     if realspeed:
-        
+        sim = turtle.Turtle()
+        sim.penup()
+        sim.hideturtle()
+        sim.color("white")
+        sim.goto(200,270)
+        sim.write("Collisions: {}".format(collisions),
+                    move=False,
+                    align="left",
+                    font=("Deja Vu Sans Mono", 15, "normal"))
+
+
 
     label = turtle.Turtle()
     label.penup()
