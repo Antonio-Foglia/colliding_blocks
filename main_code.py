@@ -21,6 +21,8 @@ def main(box1, box2,realtime=False, sim_time = float('inf'), interval=0.0001):
     '''total time elapsed'''
     t = interval
     collisions = 0
+    if realtime:
+        print('Collisions: {}'.format(collisions),end = "\r")
     
     while t < sim_time:
         
@@ -36,7 +38,7 @@ def main(box1, box2,realtime=False, sim_time = float('inf'), interval=0.0001):
             box1 = collision_with_wall(box1)
             collisions += 1
             if realtime:
-                print(collisions,end = "\r")
+                print('Collisions: {}'.format(collisions),end = "\r")
                 #print('box1: {} \nbox2: {}'.format(box1,box2))
                 #print(str(collisions) + "(wall)" ,end = "\r")
             
@@ -45,7 +47,7 @@ def main(box1, box2,realtime=False, sim_time = float('inf'), interval=0.0001):
             box2 = collision_with_wall(box2)
             collisions += 1
             if realtime:
-                print(collisions,end = "\r")
+                print('Collisions: {}'.format(collisions),end = "\r")
                 #print('box1: {} \nbox2: {}'.format(box1,box2))
             
         '''check and solve for collsion between two boxes'''
@@ -53,7 +55,7 @@ def main(box1, box2,realtime=False, sim_time = float('inf'), interval=0.0001):
             box1, box2 = collision(box1, box2)
             collisions += 1
             if realtime:
-                print(collisions,end = "\r")
+                print('Collisions: {}'.format(collisions),end = "\r")
                 #print('box1: {} \nbox2: {}'.format(box1,box2))
                 #print(str(collisions) + "(boxs)" ,end = "\r")
         
@@ -108,7 +110,7 @@ def terminal(box1,box2):
 
 
 '''if b1 and b2 are powers of 100, the total collisions will be equal to the digits of pi'''
-i = int(input('What power of 100? '))
+i = float(input('What power of 100? '))
 b1 ={'x1':5 , 'w': 1, 'v' : 0 , 'm': 1 }
 b2 = {'x1':10 , 'w': 2, 'v' : -2, 'm': 100**i }
 o = True if input('Realtime? (y/n) ') == 'y' else False
