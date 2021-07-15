@@ -100,7 +100,7 @@ def collision(box1, box2):
 '''check for the terminal state'''
 def terminal(box1,box2):
     
-    if box2['v'] >= box1['v'] and box1['v'] > 0 and box2['v'] > 0:
+    if box2['v'] >= box1['v'] and box1['v'] >= 0 and box2['v'] > 0:
         return True
     
     return False
