@@ -3,26 +3,26 @@ import time
 import pyautogui as pui
 import playsound
 
-WALL = 0
+WALL = 4
 
 SHIFT = -300
 
-SCALE = 30
+SCALE = 10
 
 VCONST = (0.36/5+0.735/10)/2
 
 
 
 def main2(box1, box2, realspeed = False, simspeed = 1):
-  
-  
+
+
     #playsound.playsound('sounds/off.mp3.mov',False)
-    
+
     if realspeed:
         box1['v']*=VCONST*simspeed
         box2['v']*=VCONST*simspeed
 
-    curr_wall = WALL*100+SHIFT
+    #curr_wall = WALL*100+SHIFT
 
     collisions = 0
 
@@ -37,7 +37,7 @@ def main2(box1, box2, realspeed = False, simspeed = 1):
         sim.penup()
         sim.hideturtle()
         sim.color("white")
-        sim.goto(WALL*100+SHIFT,-SCALE/2-40)
+        sim.goto(SHIFT,-SCALE/2-40)
         sim.write("Simulation speed: {}x".format(simspeed),
                     move=False,
                     align="left",
@@ -61,7 +61,7 @@ def main2(box1, box2, realspeed = False, simspeed = 1):
     mlabel.hideturtle()
     mlabel.color("green")
     mlabel.goto(-200,270)
-    mlabel.write("green mass: {} kg \ngreen speed: {} m/s".format(box1['m'],round(box1['v']/(VCONST*simspeed) if realspeed else box1['v'],3)),
+    mlabel.write("green mass: {} kg \ngreen velocity: {} m/s".format(box1['m'],round(box1['v']/(VCONST*simspeed) if realspeed else box1['v'],3)),
                  move=False,
                  align="left",
                  font=("Deja Vu Sans Mono", 15, "normal"))
@@ -69,7 +69,7 @@ def main2(box1, box2, realspeed = False, simspeed = 1):
 
     mlabel.color("blue")
     mlabel.goto(0,270)
-    mlabel.write("blue mass: {} kg \nblue speed: {} m/s".format(box2['m'],round(box2['v']/(VCONST*simspeed) if realspeed else box2['v'],3)),
+    mlabel.write("blue mass: {} kg \nblue velocity: {} m/s".format(box2['m'],round(box2['v']/(VCONST*simspeed) if realspeed else box2['v'],3)),
                  move=False,
                  align="left",
                  font=("Deja Vu Sans Mono", 15, "normal"))
@@ -80,10 +80,12 @@ def main2(box1, box2, realspeed = False, simspeed = 1):
     wall.color("white")
     wall.speed(0)
     wall.penup()
-    wall.goto(300,0)
+    wall.goto(SHIFT,0)
     wall.pendown()
-    wall.goto(WALL*100+SHIFT, 0 )
-    wall.goto(WALL*100+SHIFT, SCALE*10)
+    wall.goto(-SHIFT,0)
+    wall.goto(WALL*SCALE+SHIFT,0)
+    wall.goto(WALL*SCALE+SHIFT, SCALE*10)
+    wall.pendown()
     wall.hideturtle()
     playsound.playsound('sounds/tack2.wav',False)
 
@@ -95,14 +97,14 @@ def main2(box1, box2, realspeed = False, simspeed = 1):
     i = 0
     while i <= 600/SCALE:
         alabel.penup()
-        alabel.goto(WALL*100+SHIFT+i*SCALE, 0)
+        alabel.goto(SHIFT+i*SCALE, 0)
         alabel.pendown()
-        alabel.goto(WALL*100+SHIFT+i*SCALE, -SCALE/2)
+        alabel.goto(SHIFT+i*SCALE, -SCALE/2)
         alabel.penup()
-        alabel.goto(WALL*100+SHIFT+i*SCALE, -SCALE/2-15)
+        alabel.goto(SHIFT+i*SCALE, -SCALE/2-15)
         alabel.write(i, move=False, align="left", font=("Deja Vu Sans Mono", 10, "normal"))
         playsound.playsound('sounds/tack.wav',False)
-        i+=1
+        i += 1 if SCALE >= 15 else 2 if SCALE >= 5 else 4
 
     b1 = turtle.Turtle()
     b1.shape("square")
@@ -177,13 +179,13 @@ def main2(box1, box2, realspeed = False, simspeed = 1):
             mlabel.clear()
             mlabel.color("green")
             mlabel.goto(-200,270)
-            mlabel.write("green mass: {} kg \ngreen speed: {} m/s".format(box1['m'],round(box1['v']/(VCONST*simspeed) if realspeed else box1['v'],3)),
+            mlabel.write("green mass: {} kg \ngreen velocity: {} m/s".format(box1['m'],round(box1['v']/(VCONST*simspeed) if realspeed else box1['v'],3)),
                          move=False,
                          align="left",
                          font=("Deja Vu Sans Mono", 15, "normal"))
             mlabel.color("blue")
             mlabel.goto(0,270)
-            mlabel.write("blue mass: {} kg \nblue speed: {} m/s".format(box2['m'],round(box2['v']/(VCONST*simspeed) if realspeed else box2['v'],3)),
+            mlabel.write("blue mass: {} kg \nblue velocity: {} m/s".format(box2['m'],round(box2['v']/(VCONST*simspeed) if realspeed else box2['v'],3)),
                          move=False,
                          align="left",
                          font=("Deja Vu Sans Mono", 15, "normal"))
