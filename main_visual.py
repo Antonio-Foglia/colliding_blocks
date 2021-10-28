@@ -3,11 +3,11 @@ import time
 import pyautogui as pui
 import playsound
 
-WALL = 4
+WALL = 0
 
 SHIFT = -300
 
-SCALE = 10
+SCALE = 30
 
 VCONST = (0.36/5+0.735/10)/2
 
@@ -261,6 +261,7 @@ def main():
         return 'Finito'
 
     a = pui.prompt(text='Enter simulation speed (e.g. 0.5 for half the speed)', title='Simualtion speed' , default='1')
+    main2(box1,box2, realspeed=True, simspeed = float(a.replace(" ","")) if a is not None else 1  )
 
     try:
         main2(box1,box2, realspeed=True, simspeed = float(a.replace(" ","")) if a is not None else 1  )

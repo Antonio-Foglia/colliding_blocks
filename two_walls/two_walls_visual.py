@@ -3,9 +3,9 @@ import time
 import pyautogui as pui
 import playsound
 
-WALL1 = 2
+WALL1 = 0
 
-WALL2 = 19
+WALL2 = 20
 
 SHIFT = -300
 
@@ -18,7 +18,7 @@ VCONST = (0.36/5+0.735/10)/2
 def main2(box1, box2, realspeed = False, simspeed = 1):
 
 
-    #playsound.playsound('sounds/off.mp3.mov',False)
+    playsound.playsound('sounds/off.mp3.mov',False)
 
     if realspeed:
         box1['v']*=VCONST*simspeed
@@ -115,8 +115,8 @@ def main2(box1, box2, realspeed = False, simspeed = 1):
 
     b1 = turtle.Turtle()
     b1.shape("square")
-    #turtle.register_shape('1.gif')
-    #b1.shape("1.gif")
+    #turtle.register_shape('shapes/shape_name.gif')
+    #b1.shape("shapes/shape_name.gif")
     b1.shapesize(stretch_wid=box1['w']/2*SCALE/10, stretch_len=box1['w']/2*SCALE/10, outline=None)
     b1.color("green")
     b1.penup()
@@ -127,8 +127,8 @@ def main2(box1, box2, realspeed = False, simspeed = 1):
 
     b2 = turtle.Turtle()
     b2.shape("square")
-    #turtle.register_shape('2.gif')
-    #b2.shape("2.gif")
+    #turtle.register_shape('shapes/shape_name.gif')
+    #b2.shape("shapes/shape_name.gif")
     b2.shapesize(stretch_wid=box2['w']/2*SCALE/10, stretch_len=box2['w']/2*SCALE/10, outline=None)
     b2.color("blue")
     b2.penup()
